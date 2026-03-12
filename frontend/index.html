@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JetSetGO - Celebrity Flight Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🛩️ JetSetGO Celebrity Flights</h1>
+    </header>
+
+    <main>
+        <!-- Homepage with celebrity tiles -->
+        <div id="homepage">
+            <h2>Select a Celebrity</h2>
+            <div id="celebrity-tiles" class="tiles-container">
+                <!-- Celebrity tiles will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Celebrity flights page -->
+        <div id="celebrity-page" class="hidden">
+            <button id="back-button">← Back to Homepage</button>
+            <h2 id="celebrity-name">Celebrity Flights</h2>
+            
+            <div id="flights-container">
+                <!-- Flights will be loaded here -->
+            </div>
+
+            <button id="add-flight-btn" class="add-btn">+ Add New Flight</button>
+        </div>
+
+        <!-- Edit Flight Modal -->
+        <div id="edit-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3 id="modal-title">Edit Flight</h3>
+                
+                <form id="flight-form">
+                    <input type="hidden" id="flight-id">
+                    
+                    <label for="flight-number">Flight Number:</label>
+                    <input type="text" id="flight-number" required>
+                    
+                    <label for="departure-airport">Departure Airport:</label>
+                    <input type="text" id="departure-airport" required>
+                    
+                    <label for="arrival-airport">Arrival Airport:</label>
+                    <input type="text" id="arrival-airport" required>
+                    
+                    <label for="departure-time">Departure Time:</label>
+                    <input type="datetime-local" id="departure-time" required>
+                    
+                    <label for="arrival-time">Arrival Time:</label>
+                    <input type="datetime-local" id="arrival-time" required>
+                    
+                    <label for="plane-select">Plane:</label>
+                    <select id="plane-select" required>
+                        <!-- Plane options will be loaded here -->
+                    </select>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" class="save-btn">Save Flight</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
