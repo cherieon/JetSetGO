@@ -2,8 +2,8 @@ CREATE TABLE celebrities (
     celebrityId SERIAL PRIMARY KEY,
     name VARCHAR(100),
     profession VARCHAR(100),
-    nationality VARCHAR(100),
-)        
+    nationality VARCHAR(100)
+);      
 
 CREATE TABLE planeModels (
     planeId SERIAL PRIMARY KEY,
@@ -11,19 +11,19 @@ CREATE TABLE planeModels (
     modelName VARCHAR(100),
     manufacturingYear INTEGER,
     capacity INTEGER,
-    maxRangeKm INTEGER,
-)
+    maxRangeKm INTEGER
+);
 
 CREATE TABLE flights (
     flightID SERIAL PRIMARY KEY,
-    celebrityId REFERENCES celebrities(celebrityId),
-    planeId REFERENCES planeModels(planeId),
+    celebrityId INTEGER REFERENCES celebrities(celebrityId),
+    planeId INTEGER REFERENCES planeModels(planeId),
     flightNumber VARCHAR(20),
     departureAirport VARCHAR(50),
     arrivalAirport VARCHAR(50),
     departureTime TIMESTAMP,
     arrivalTime TIMESTAMP
-)
+);
 
 INSERT INTO celebrities (name, profession, nationality)
 VALUES
@@ -46,3 +46,5 @@ VALUES
     (3,3,'UA300','ORD','MIA','2024-07-03 10:00:00','2024-07-03 14:00:00'),
     (1,4,'SW400','MIA','JFK','2024-07-04 11:00:00','2024-07-04 14:00:00'),
     (2,5,'AA500','JFK','LAX','2024-07-05 12:00:00','2024-07-05 15:00:00');
+
+

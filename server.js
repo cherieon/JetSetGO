@@ -1,22 +1,18 @@
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
+const { Pool } = require("pg");
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-
-// for frontend
-app.use(express.static(path.join(__dirname, "public")));
-
-// Test API
-app.get("/api/test", (req, res) => {
-  res.json({ message: "✈️" });
+const pool = new Pool({
+  user: "postgres",
+  host: "localhost",
+  database: "jetsetgo",
+  password: "Cranbrook1",
+  port: 5432
 });
 
-// Start
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server on ${PORT}`);
+
+pool.query("SELECT NOW()", (err, res) => {
+  if (err) {
+    console.error("Database connection error:", err);
+  } else {
+    console.log("Database connected:", res.rows);
+  }
 });
