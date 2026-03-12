@@ -25,6 +25,13 @@ async function loadCelebrities() {
     }
 }
 
+// Celebrity photo mapping
+const celebrityPhotos = {
+    'Leonardo DiCaprio': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
+    'Taylor Swift': 'https://images.unsplash.com/photo-1494790108755-2616b332c3b6?w=200&h=200&fit=crop&crop=face',
+    'Elon Musk': 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face'
+};
+
 // Show celebrity tiles on the homepage
 function displayCelebrityTiles(celebrities) {
     const container = document.getElementById('celebrity-tiles');
@@ -38,10 +45,18 @@ function displayCelebrityTiles(celebrities) {
         tile.className = 'celebrity-tile';
         tile.onclick = () => showCelebrityFlights(celebrity);
         
+        // Get photo URL or use placeholder
+        const photoUrl = celebrityPhotos[celebrity.name] || 'https://via.placeholder.com/200x200/667eea/white?text=' + celebrity.name.split(' ').map(n => n[0]).join('');
+        
         tile.innerHTML = `
-            <h3>${celebrity.name}</h3>
-            <p>${celebrity.profession}</p>
-            <p>📍 ${celebrity.nationality}</p>
+            <div class="celebrity-photo">
+                <img src="${photoUrl}" alt="${celebrity.name}" onerror="this.src='https://via.placeholder.com/200x200/667eea/white?text=${celebrity.name.split(' ').map(n => n[0]).join('')}'">
+            </div>
+            <div class="celebrity-info">
+                <h3>${celebrity.name}</h3>
+                <p>${celebrity.profession}</p>
+                <p>📍 ${celebrity.nationality}</p>
+            </div>
         `;
         
         container.appendChild(tile);
